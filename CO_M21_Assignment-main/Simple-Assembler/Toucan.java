@@ -1,4 +1,3 @@
-
 import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,64 +9,68 @@ public class Toucan
 {
 	static int count_arr;
 	public static void main(String[] args)throws IOException {
-	       Reader.init(System.in);
-	       String arr_input[] = new String[256];   //// ARRAY arr_input TO STORE INPUT VALUES NEGLECTING THE EMPTY LINE BUT COUNTING IN TOTAL NO OF LINE
-	       String arr_binary[] = new String[256];
-	       int total_line = 1;                //// INT VAR TO STORE THE TOTAL NO OF LINES AS INPUT 
-	       int p_line_no = 1;  
-		   boolean flag = true;                
-	       while(flag){
-	            if(total_line>256){
-	               System.out.println("Error: Memory Space Exceeded.");
+	    Reader.init(System.in);
+	    String arr_input[] = new String[256];   //// ARRAY arr_input TO STORE INPUT VALUES NEGLECTING THE EMPTY LINE BUT COUNTING IN TOTAL NO OF LINE
+	    String arr_binary[] = new String[256];
+	    int total_line = 1;                //// INT VAR TO STORE THE TOTAL NO OF LINES AS INPUT 
+        int p_line_no = 1;  
+	    boolean flag = true;                
+        while(flag){
+           if(total_line>256){
+               System.out.println("Error: Memory Space Exceeded.");
+			   break;
+           }else {
+               String temp = Reader.nextLine();
+               arr_input[total_line-1] = temp;
+			   if(temp==null){
+				   System.out.println("Error: No hlt instruction");
+				//    flag =true;
 				   break;
-	            }else {
-	                String temp = Reader.nextLine();
-	                arr_input[total_line-1] = temp;
-				    if(temp.equals("")){
-					}else{
-					   	int n = temp.length();
-				   		if(temp.equals("hlt") || (temp.substring(n-3).equals("hlt"))){
-	                   		break;
-	               		}
+			   }
+			   if(temp.equals("")){
+				}else{
+				   	int n = temp.length();
+			   		if(temp.equals("hlt") || (temp.substring(n-3).equals("hlt"))){
+	               		break;
 	           		}
-				}
-				total_line+=1;     // post increment is that after taking of input so helps in indexing of array also				   
+	       		}
 			}
-	       Read obj = new Read();
-	       for(int i = 0; i<total_line;i++){
-	           if(arr_input[i].equals("")){
-	           }else{
-	                if (arr_input[i].charAt(0) == 32){
-	                    String tarr[]= arr_input[i].split(" ");    
-	                    for(String st: tarr){
-	                        if(st.equals("")){
-	                        }else{
-	                            arr_input[i] += st+" ";
-	                        }
+			total_line+=1;     // post increment is that after taking of input so helps in indexing of array also				   
+		}
+        Read obj = new Read();
+	    for(int i = 0; i<total_line;i++){
+	       if(arr_input[i].equals("")){
+	       }else{
+                if (arr_input[i].charAt(0) == 32){
+	                String tarr[]= arr_input[i].split(" ");    
+	                for(String st: tarr){
+	                    if(st.equals("")){
+	                    }else{
+	                        arr_input[i] += st+" ";
 	                    }
 	                }
-					System.out.println(p_line_no);
-	                String s_return = obj.readF(arr_input[i],p_line_no, total_line);
-					if(s_return.equals("")){
-					}else if(!(s_return=="") && s_return.charAt(0) == 69){
-						System.out.println(s_return);
-						flag = false;
-	                    break;
-					}else if(s_return.substring(0,1).equals("0") || s_return.substring(0,1).equals("1")){
-	                    arr_binary = insertInBArr(s_return, arr_binary);
-	                }else{
-						arr_input[i] = s_return;
-						i-=1;
-						p_line_no-=1;
-					}
 	            }
-			   p_line_no +=1;
-	        }
-		   
-		    if(flag){
-			   showBin(arr_binary);
-		    }
-	    }
+	            String s_return = obj.readF(arr_input[i],p_line_no, total_line);
+				if(s_return.equals("")){
+				}else if(!(s_return=="") && s_return.charAt(0) == 69){
+					System.out.println(s_return);
+					flag = false;
+	                break;
+				}else if(s_return.substring(0,1).equals("0") || s_return.substring(0,1).equals("1")){
+	                arr_binary = insertInBArr(s_return, arr_binary);
+	            }else{
+					arr_input[i] = s_return;
+					i-=1;
+					p_line_no-=1;
+				}
+	       }
+		   p_line_no +=1;
+       }
+       
+		if(flag){
+		   showBin(arr_binary);
+	   }
+    }
     public static String[] insertInBArr(String string, String arr[]){    //// this ptr is used to refer the position at which the insertion must be done
 	    if(string.length()>16){
 ////////////the string would be returned in manner: <machine_code_for_that_label>-<decimal_value_at_which_requirement is there>" "<binary_value_of_memaddr_labelrequired>-CONTINUED    
@@ -321,6 +324,8 @@ class CheckAP{
 			}
 		}else if(arr[0].equals("hlt")){
 			s = "1001100000000000";
+		}else{
+			s = "Error at Line no. "+line_no_of_inst+st_label+": Invalid Instruction type for the ISA.";
 		}
 		return s;
 }
