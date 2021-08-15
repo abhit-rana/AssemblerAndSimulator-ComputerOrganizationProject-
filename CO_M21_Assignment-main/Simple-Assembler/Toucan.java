@@ -253,7 +253,6 @@ class CheckAP{
 
 	//////////////////////////FUNCTION WHICH CHECKS THE ERROR AND CONVERTS INTO BINARY CODE//////////////////////////
 	public String check(String arr[], int line_no_of_inst, int total_input_no) {  ////  this stack is 0used to flag the condition that it is the first call for a particular function and also it is used to flag the instructions which need not to be converted to binary like var
-		System.out.println(line_no_of_inst);
 		flag = true;
 		int count = 0;
 		if(arr[0].equals("var")) {
