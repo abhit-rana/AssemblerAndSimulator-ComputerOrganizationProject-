@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class Toucan
 {
-	static int count_arr;
+	static int count_arr; //////////////////
 	public static void main(String[] args)throws IOException {
 	    Reader.init(System.in);
 	    String arr_input[] = new String[256];   //// ARRAY arr_input TO STORE INPUT VALUES NEGLECTING THE EMPTY LINE BUT COUNTING IN TOTAL NO OF LINE
