@@ -17,13 +17,13 @@ public class Toucan
 	       int p_line_no = 1;  
 		   boolean flag = true;                
 	       while(flag){
-	           if(total_line>256){
+	            if(total_line>256){
 	               System.out.println("Error: Memory Space Exceeded.");
 				   break;
-	           }else {
-	               String temp = Reader.nextLine();
-	               arr_input[total_line-1] = temp;
-				   if(temp.equals("")){
+	            }else {
+	                String temp = Reader.nextLine();
+	                arr_input[total_line-1] = temp;
+				    if(temp.equals("")){
 					}else{
 					   	int n = temp.length();
 				   		if(temp.equals("hlt") || (temp.substring(n-3).equals("hlt"))){
@@ -36,7 +36,6 @@ public class Toucan
 	       Read obj = new Read();
 	       for(int i = 0; i<total_line;i++){
 	           if(arr_input[i].equals("")){
-				   System.out.println("49857475");
 	           }else{
 	                if (arr_input[i].charAt(0) == 32){
 	                    String tarr[]= arr_input[i].split(" ");    
@@ -61,13 +60,13 @@ public class Toucan
 						i-=1;
 						p_line_no-=1;
 					}
-	           }
+	            }
 			   p_line_no +=1;
-	       }
+	        }
 		   
-		   if(flag){
+		    if(flag){
 			   showBin(arr_binary);
-		   }
+		    }
 	    }
     public static String[] insertInBArr(String string, String arr[]){    //// this ptr is used to refer the position at which the insertion must be done
 	    if(string.length()>16){
