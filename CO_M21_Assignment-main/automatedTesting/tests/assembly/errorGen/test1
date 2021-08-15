@@ -23,3 +23,86 @@ mylabel: add R0 myvar
 mylabel: add xyz
 mylabel: add
 var xyz R0
+
+		if(flag){
+		}else{
+			flag = true;
+			Read obj = new Read();
+			for(int i = 0; i<total_line;i++){
+			if(arr_input[i].equals("")){
+			}else{
+					if (arr_input[i].charAt(0) == 32){
+						String tarr[]= arr_input[i].split(" ");    
+						for(String st: tarr){
+							if(st.equals("")){
+							}else{
+								arr_input[i] += st+" ";
+							}
+						}
+					}
+					String s_return = obj.readF(arr_input[i],p_line_no, total_line);
+					if(s_return.equals("")){
+					}else if(!(s_return=="") && s_return.charAt(0) == 69){
+						System.out.println(s_return);
+						flag = false;
+						break;
+					}else if(s_return.substring(0,1).equals("0") || s_return.substring(0,1).equals("1")){
+						arr_binary = insertInBArr(s_return, arr_binary);
+					}else{
+						arr_input[i] = s_return;
+						i-=1;
+						p_line_no-=1;
+				}	}
+			}
+			p_line_no +=1;
+       }
+       
+       
+       
+       
+       
+       
+       
+       
+       
+        Read obj = new Read();
+	    for(int i = 0; i<total_line;i++){
+	       if(arr_input[i].equals("")){
+	       }else{
+                if (arr_input[i].charAt(0) == 32){
+	                String tarr[]= arr_input[i].split(" ");    
+	                for(String st: tarr){
+	                    if(st.equals("")){
+	                    }else{
+	                        arr_input[i] += st+" ";
+	                    }
+	                }
+	            }
+	            String s_return = obj.readF(arr_input[i],p_line_no, total_line);
+				if(s_return.equals("")){
+				}else if(!(s_return=="") && s_return.charAt(0) == 69){
+					System.out.println(s_return);
+					flag = false;
+	                break;
+				}else if(s_return.substring(0,1).equals("0") || s_return.substring(0,1).equals("1")){
+	                arr_binary = insertInBArr(s_return, arr_binary);
+	            }else{
+					arr_input[i] = s_return;
+					i-=1;
+					p_line_no-=1;
+				}
+	       }
+		   p_line_no +=1;
+       }
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
